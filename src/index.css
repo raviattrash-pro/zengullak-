@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary: #10b981;
+    --primary-dark: #059669;
+    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+
+  body {
+    background-color: #000000;
+    color: #f5f5f7;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Hide scrollbars completely while keeping full momentum swipe */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Apple iOS Frosted Glass & Surface Tokens */
+.apple-glass {
+  background: rgba(22, 22, 26, 0.75);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.apple-card {
+  background: linear-gradient(180deg, rgba(26, 26, 32, 0.82) 0%, rgba(14, 14, 18, 0.92) 100%);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+.apple-pill {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.18);
+}
+
+/* Subtle sleek scrollbar for long ledgers */
+.cash-tray-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.cash-tray-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.cash-tray-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+.cash-tray-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 3D Realistic Coin Flying & Dropping into Gullak Slit Animation */
+@keyframes coinDropIntoSlot {
+  0% {
+    transform: translateY(-80px) scale(1.3) rotateY(0deg) rotateZ(-15deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-50px) scale(1.15) rotateY(180deg) rotateZ(10deg);
+  }
+  60% {
+    transform: translateY(-15px) scale(0.95) rotateY(360deg) rotateZ(-5deg);
+  }
+  85% {
+    transform: translateY(12px) scale(0.65) rotateX(65deg) rotateZ(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(22px) scale(0.3) rotateX(85deg);
+    opacity: 0;
+  }
+}
+
+/* 3D Folded Note Sliding into Slit Animation */
+@keyframes noteSlideIntoSlot {
+  0% {
+    transform: translateY(-90px) scale(1.2) rotate(-25deg) perspective(400px) rotateX(20deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(-50px) scale(1.05) rotate(-10deg) perspective(400px) rotateX(15deg);
+  }
+  75% {
+    transform: translateY(0px) scale(0.8) rotate(0deg) perspective(400px) rotateX(40deg);
+  }
+  100% {
+    transform: translateY(20px) scale(0.4) perspective(400px) rotateX(80deg);
+    opacity: 0;
+  }
+}
+
+/* Ceramic Slit Sparkle Burst */
+@keyframes slotSparkBurst {
+  0% {
+    transform: scale(0) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4) translateY(-18px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(0.5) translateY(-30px);
+    opacity: 0;
+  }
+}
+
+/* Terracotta Pot Rebound Wobble Physics */
+@keyframes potImpactWobble {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.08, 0.92) rotate(-3deg); }
+  50% { transform: scale(0.96, 1.05) rotate(3deg); }
+  75% { transform: scale(1.02, 0.98) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.animate-coin-slot {
+  animation: coinDropIntoSlot 650ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-note-slot {
+  animation: noteSlideIntoSlot 750ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-pot-impact {
+  animation: potImpactWobble 450ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.animate-slot-spark {
+  animation: slotSparkBurst 400ms ease-out forwards;
+}
+
+/* Real Coin Arching Flight from Bottom Tray to Gullak Slot */
+@keyframes flyCurveIntoGullak {
+  0% {
+    transform: translate(0px, 0px) scale(0.9) rotate(0deg);
+    opacity: 1;
+  }
+  30% {
+    transform: translate(calc(var(--dx) * 0.35), calc(var(--dy) * 0.5 - 75px)) scale(1.3) rotate(160deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translate(calc(var(--dx) * 0.85), calc(var(--dy) * 0.88 - 18px)) scale(0.95) rotate(320deg) rotateX(60deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.35) rotate(360deg) rotateX(85deg);
+    opacity: 0;
+  }
+}
+
+/* Real Banknote Arching Flight from Bottom Tray to Gullak Slot */
+@keyframes flyNoteCurveIntoGullak {
+  0% {
+    transform: translate(0px, 0px) scale(0.9) rotate(0deg);
+    opacity: 1;
+  }
+  35% {
+    transform: translate(calc(var(--dx) * 0.4), calc(var(--dy) * 0.5 - 85px)) scale(1.2) rotate(-18deg);
+    opacity: 1;
+  }
+  80% {
+    transform: translate(calc(var(--dx) * 0.9), calc(var(--dy) * 0.9 - 12px)) scale(0.75) rotate(0deg) perspective(350px) rotateX(55deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.28) perspective(350px) rotateX(85deg);
+    opacity: 0;
+  }
+}
+
+/* Floating Gain Badge Rise (+₹20 / +₹100) */
+@keyframes floatUpGain {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  30% {
+    transform: translateY(-16px) scale(1.15);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-38px) scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-50px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.animate-fly-coin-curve {
+  animation: flyCurveIntoGullak 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-fly-note-curve {
+  animation: flyNoteCurveIntoGullak 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-float-gain {
+  animation: floatUpGain 800ms ease-out forwards;
+}
